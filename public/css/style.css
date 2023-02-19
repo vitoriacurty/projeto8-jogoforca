@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Roboto:wght@700&display=swap');
+
+body {
+    /*font-family: 'Noto Sans', sans-serif;*/
+    font-family: 'Roboto', sans-serif;
+}
+
+.jogo-conteiner {
+    display: flex;
+    width: 400px;
+    height: 467px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+}
