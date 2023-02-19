@@ -1,5 +1,5 @@
-import { Jogo } from "./components/jogo/Jogo";
-import { Letras } from "./components/letras/Letras";
+import { Jogo } from "./components/Jogo";
+import { Letras } from "./components/Letras";
 import palavras from "./palavras";
 
 export default App;
