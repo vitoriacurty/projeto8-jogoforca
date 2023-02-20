@@ -1,6 +1,9 @@
+import { useState } from "react";
 import { Jogo } from "./components/Jogo";
 import { Letras } from "./components/Letras";
 import palavras from "./palavras";
+
+const [disabled, setDisabled] = useState(true)
 
 export default App;
 function App() {
@@ -21,7 +24,7 @@ function App() {
       )
       }
 
-      <Letras />
+      <Letras disabled={disabled} />
     </main>
   );
 }
