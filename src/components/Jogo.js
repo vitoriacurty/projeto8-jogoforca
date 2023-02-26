@@ -13,14 +13,14 @@ export const Jogo = ({ wrong, show, onClick, disabled, gameOver, win }) => {
   return (
     <div className="game-container">
       <div className="game-left">
-        <img src={image[wrong]} alt="imagem forca" />
+        <img src={image[wrong]} alt="imagem forca" data-test="game-image"/>
       </div>
 
       <div className="game-right">
-        <button onClick={onClick}>
+        <button onClick={onClick} data-teste="choose-word">
           <p className="p-game">Escolher Palavra</p>
         </button>
-        <h1 style={gameOver ? win ? { color: "green" } : { color: "red" } : { color: "black" }}>
+        <h1 style={gameOver ? win ? { color: "green" } : { color: "red" } : { color: "black" }} data-test="word">
           {(!disabled || gameOver) ? (show ? show.join(" ") : "") : ""}
         </h1>
       </div>
