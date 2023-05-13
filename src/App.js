@@ -1,29 +1,26 @@
 import palavras from "./palavras"
-import alfabeto from "./alfabeto"
-
-import forca0 from "./assets/forca0.png"
+import { Jogo } from "./componentes/Jogo"
+import { Letras } from "./componentes/Letras"
+import { useState } from "react"
 
 export default function App() {
+  const [wrong, setWrong] = useState(0)
+  const [word, setWord] = useState([])
+  const [show, setShow] = useState([])
+
+  function button() {
+    setWrong(0)
+    const newWord = palavras[Math.floor(Math.random() * (palavras.length - 1))]
+    setWord(newWord.split(""))
+    setShow(Array(newWord.length).fill(' _'))
+    console.log(newWord)
+
+  }
+
   return (
-    <>
-      <div className="game-container">
-        <div className="game-left">
-          <img src={forca0} alt="imagem forca" />
-        </div>
-
-        <div className="game-right">
-          <button>
-            <p className="p-game">Escolher Palavra</p>
-          </button>
-          <h1>_ _ _ _ _ _ _ _ _</h1>
-        </div>
-
-      </div>
-      <div className="letras-container">
-        <div className="letra">
-          {alfabeto.map((item) => <button>{item}</button>)}
-        </div>
-      </div>
-    </>
+    <main>
+      <Jogo wrong={wrong} show={show} onClick={() => button()} />
+      <Letras />
+    </main>
   )
 }
