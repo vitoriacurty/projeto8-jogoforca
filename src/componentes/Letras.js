@@ -6,7 +6,7 @@ export const Letras = ({ disabled, pickedLetters, handleButton }) => {
       <div className="letra">
         {alfabeto.map(item => {
           const isPicked = pickedLetters.includes(item)
-          return <button key={item} onClick={() => handleButton(item)} disabled={disabled || isPicked}>
+          return <button data-test="letter" key={item} onClick={() => handleButton(item)} disabled={disabled || isPicked}>
             {item.toUpperCase()} 
           </button>
         })}
