@@ -9,10 +9,14 @@ export default function App() {
   const [show, setShow] = useState([])
   const [pickedLetters, setPickedLetters] = useState([])
   const [disabled, setDisabled] = useState(true)
+  const [win, setWin] = useState(false)
+  const [gameOver, setGameOver] = useState(false)
 
   function button() {
     setWrong(0)
     setDisabled(false)
+    setWin(false)
+    setGameOver(false)
     const newWord = palavras[Math.floor(Math.random() * (palavras.length - 1))]
     setWord(newWord.split(""))
     setShow(Array(newWord.length).fill(' _'))
@@ -37,10 +41,23 @@ export default function App() {
     }
   }
 
-return (
-  <main>
-    <Jogo wrong={wrong} show={show} onClick={() => button()} disabled={disabled} />
-    <Letras pickedLetters={pickedLetters} handleButton={handleButton} disabled={disabled} />
-  </main>
-)
-}
+  function endGame(endGame) {
+    setShow(word.join("").split(""))
+    setGameOver(true)
+    setDisabled(true)
+    endGame ? setWin(true) : setWin(false)
+  }
+
+  if (wrong === 6 && !disabled) {
+    endGame(false)
+  } else if (show.join("") === word.join("") && !disabled) {
+    endGame(true)
+  }
+
+  return (
+    <main>
+      <Jogo wrong={wrong} show={show} onClick={() => button()} disabled={disabled} win={win} gameOver={gameOver} />
+      <Letras pickedLetters={pickedLetters} handleButton={handleButton} disabled={disabled} />
+    </main>
+  )
+} 

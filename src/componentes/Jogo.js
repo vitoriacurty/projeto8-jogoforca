@@ -6,7 +6,7 @@ import forca4 from "../assets/forca4.png"
 import forca5 from "../assets/forca5.png"
 import forca6 from "../assets/forca6.png"
 
-export const Jogo = ({ wrong, show, onClick}) => {
+export const Jogo = ({ wrong, show, onClick, disabled, win, gameOver }) => {
   const image = [forca0, forca1, forca2, forca3, forca4, forca5, forca6]
 
   return (
@@ -19,8 +19,8 @@ export const Jogo = ({ wrong, show, onClick}) => {
       <button onClick={onClick}>
         <p className="p-game">Escolher Palavra</p>
       </button>
-      <h1>{show}</h1>
+      <h1 style={gameOver ? win ? { color: "green" } : { color: "red" } : { color: "black" }}>{(!disabled || gameOver) ? (show ? show.join(" ") : "") : ""}</h1>
     </div>
-  </div>
+  </div> 
   )
 } 
